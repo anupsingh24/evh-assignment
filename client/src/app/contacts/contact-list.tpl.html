@@ -1,0 +1,38 @@
+<div class="pull-right">
+    <button data-ng-click="clist.createContact()" class="btn btn-success">Create Contact</button>
+</div>
+<div class="table">
+    <ul class="table-head">
+        <li>
+            <div class="table-cell w-20">Name</div>
+            <div class="table-cell w-20">Email</div>
+            <div class="table-cell w-20">Phone No.</div>
+            <div class="table-cell w-20">Status</div>
+        </li>
+    </ul>
+    <ul class="table-body">
+        <li class="table-row dropdown" data-ng-repeat="list in clist.contactList track by $index">
+            <div class="shrink-row">
+                <a class="clearfix" data-ng-click="clist.editContactPage(list.uid)">
+                    <div class="table-cell w-20">{{list.first_name}}&nbsp;{{list.last_name}}</div>
+                    <div class="table-cell w-20">{{list.title}}</div>
+                    <div class="table-cell w-20">{{list.number}}
+                    </div>
+                    <div class="table-cell w-20">
+                        <span data-ng-if="list.status == true" class="active">Active</span>
+                        <span data-ng-if="list.status == false" class="inactive">Inactive</span>
+                    </div>
+                    <div class="table-cell w-20" title="Delete Contact">
+                        <button class="deleteButton" data-ng-click="clist.deleteContact(list.uid,$index);$event.stopImmediatePropagation()">-</button>
+                    </div>
+                </a>
+            </div>
+        </li>
+        <div data-ng-if="clist.loader">
+            <img src="cdn/images/loader.gif" width="50px" class="loader">
+        </div>
+        <div class="no-match-found" data-ng-if="!clist.contactList.length">
+            <p>No contact available</p>
+        </div>
+    </ul>
+</div>

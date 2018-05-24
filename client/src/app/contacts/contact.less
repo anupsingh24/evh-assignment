@@ -1,0 +1,125 @@
+.page-name {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: gray;
+}
+
+.table {
+    .w-20 {
+        width: 20%;
+    }
+    .table-head {
+        background-color: @grey7;
+        border: 1px solid @grey8;
+        border-top: 0px;
+        border-bottom: 0px;
+        padding-left: 12px;
+        list-style: none;
+        .table-cell {
+            font-weight: bold;
+            color: #4f6471;
+            padding: 19px 10px 19px 15px;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+    }
+    .table-body {
+        background-color: #fff;
+        border: 1px solid @grey8;
+        border-top: 0px;
+        min-height: 180px;
+        position: relative;
+        padding-left: 0;
+        margin-top: -10px;
+        max-height: 400px;
+        overflow: auto;
+        .table-cell {
+            color: @grey5;
+            padding: 20px 25px;
+        }
+        .loader {
+            position: fixed;
+            top: 45%;
+            left: 50%;
+        }
+    }
+    .table-row {
+        clear: both;
+        display: flex;
+        position: relative;
+        flex-wrap: wrap;
+        .shrink-row {
+            border-bottom: 1px solid @grey6;
+            width: 100%;
+            height: 63px;
+            a {
+                cursor: pointer;
+            }
+        }
+    }
+    .deleteButton {
+        background: transparent;
+        border: 1px solid #f00;
+        border-radius: 2em;
+        color: #f00;
+        display: inline-block;
+        font-size: 12px;
+        height: 20px;
+        line-height: 2px;
+        margin: 0 0 8px;
+        padding: 0;
+        text-align: center;
+        width: 20px;
+    }
+    .table-cell {
+        float: left;
+        font-size: 14px;
+        word-wrap: break-word;
+        &:last-child {
+            border-right: 0px;
+        }
+        .active {
+            padding: 4px 11px;
+            border: 1px solid white;
+            border-radius: 15px;
+            margin-left: -7px;
+            background: #acd568;
+            color: #727171;
+        }
+        .inactive {
+            padding: 4px 7px;
+            border: 1px solid white;
+            border-radius: 15px;
+            margin-left: -7px;
+            background: #d5d5d5;
+            color: #727171;
+        }
+    }
+    ul {
+        float: left;
+        width: 100%;
+    }
+}
+
+.pull-right {
+    margin-bottom: 18px;
+    .btn-success {
+        background-color: #6d836d;
+        border-radius: 1px;
+    }
+}
+
+.no-match-found {
+    p {
+        width: 18%;
+        margin: auto;
+        margin-top: auto;
+        font-size: 18px;
+        margin-top: 54px;
+    }
+}
+
+.button-group {
+    text-align: right;
+}
