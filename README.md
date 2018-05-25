@@ -19,7 +19,7 @@ $ npm install
 #### 3. Run gulp:
 
 ```sh
-$ NODE_ENV=development gulp
+$ gulp
 ```
 #### 4. Watch changes:
 
