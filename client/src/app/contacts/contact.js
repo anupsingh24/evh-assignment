@@ -6,9 +6,9 @@
         .controller('ContactListCtrl', ContactListCtrl)
         .controller('ContactEditCtrl', ContactEditCtrl);
 
-    ContactListCtrl.$inject = ['api', 'components', '$location'];
+    ContactListCtrl.$inject = ['api', 'components', '$location', 'Notification'];
 
-    function ContactListCtrl(api, components, $location) {
+    function ContactListCtrl(api, components, $location, Notification) {
         var headers = components.getHeaders(),
             params = {
                 content_uid: "contacts",
@@ -17,11 +17,11 @@
             self = this;
         self.loader = true;
         api.contacts.list(params, headers)
-        .then(function(data) {
-            console.log("entry list", data.entries);
-            self.contactList = data.entries;
-            self.loader = false;
-        }).
+            .then(function(data) {
+                console.log("entry list", data.entries);
+                self.contactList = data.entries;
+                self.loader = false;
+            }).
         catch(function(error) {
             console.log("entry error", error);
         });
@@ -33,12 +33,14 @@
                 .then(function(data) {
                     self.contactList.splice(index, 1);
                     console.log(self.contactList, index);
+                    Notification.success("Contact deleted successfully");
                     self.loader = false;
-                }).
-            catch(function(error) {
-                console.log("entry error", error);
-                self.loader = false;
-            });
+                })
+                .catch(function(error) {
+                    console.log("entry error", error);
+                    Notification.error(error.error_message);
+                    self.loader = false;
+                });
         };
 
         self.createContact = function() {
@@ -50,9 +52,9 @@
         };
     }
 
-    ContactEditCtrl.$inject = ['$stateParams', 'api', 'components', '$location'];
+    ContactEditCtrl.$inject = ['$stateParams', 'api', 'components', '$location', 'Notification'];
 
-    function ContactEditCtrl($stateParams, api, components, $location) {
+    function ContactEditCtrl($stateParams, api, components, $location, Notification) {
         var headers = components.getHeaders(),
             params = {
                 content_uid: "contacts",
@@ -72,11 +74,13 @@
                 }).
             catch(function(error) {
                 console.log("entry error", error);
+                Notification.error("No Contact found");
                 self.loader = false;
                 $location.path('/contacts/list');
             });
-        }else{
-            self.loader =false;
+        } else {
+            self.loader = false;
+            self.contactInfo.status = true;
         }
 
         self.deleteContact = function() {
@@ -85,10 +89,13 @@
                 .then(function(data) {
                     console.log("entry info", data.entry);
                     self.loader = false;
+                    Notification.success("Contact deleted successfully");
                     $location.path('/contacts/list');
                 }).
             catch(function(error) {
                 console.log("entry error", error);
+                Notification.error(error.error_message);
+
             });
         };
 
@@ -110,16 +117,31 @@
                 .then(function(data) {
                     console.log('submit data', data);
                     self.loader = false;
-                    $location.path('/contacts/' + data.entry.uid + '/edit');
+                    $location.path('/contacts/list');
+                    if (action === 'create') {
+                        Notification.success("Contact created successfully");
+                    } else {
+                        Notification.success("Contact updated successfully");
+                    }
                 })
                 .catch(function(error) {
                     console.log('error log', error);
+
+                    if (action === 'create') {
+                        Notification.error("Email id is already registered or Invalid data");
+                    } else {
+                        Notification.error(error.error_message);
+                    }
                     self.loader = false;
                 });
         };
 
         self.gotoList = function() {
             $location.path('/contacts/list');
+        };
+
+        self.createContact = function() {
+            $location.path('/contacts/create');
         };
     }
 })();

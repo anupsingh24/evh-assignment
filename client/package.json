@@ -24,8 +24,6 @@
     "gulp-replace": "~0.5.4",
     "gulp-jshint": "~1.11.2",
     "gulp-util": "~3.0.6",
-    "event-stream": "~3.3.1",
-    "gulp-flatten": "~0.2.0",
-    "gulp-strip-debug": ""
+    "event-stream": "~3.3.1"
   }
 }

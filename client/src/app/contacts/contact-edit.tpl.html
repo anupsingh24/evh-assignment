@@ -1,32 +1,35 @@
+<div class="pull-right">
+    <button data-ng-click="cedit.createContact()" class="btn btn-success" data-ng-if="cedit.isEdit">Create New Contact</button>
+</div>
 <div class="sub-wrapper">
     <div data-ng-if="!cedit.isEdit" class="page-name">Create Contact</div>
     <div data-ng-if="cedit.isEdit" class="page-name">Edit Contact</div>
     <form novalidate name="form" data-accessible-form data-ng-submit="submit = true; form.$valid && cedit.saveInfo(cedit.contactInfo)" autocomplete="off">
         <div class="form-group" data-ng-class="{'has-error':form.fname.$error.required && (form.fname.$touched || submit)}">
-            <label>First Name: *</label>
-            <input type="text" required class="form-control" id="fname" data-ng-model="cedit.contactInfo.first_name" name="fname">
+            <label>First Name <span class="mandatory">*</span></label>
+            <input type="text" required class="form-control" id="fname" data-ng-model="cedit.contactInfo.first_name" name="fname" placeholder="First Name">
         </div>
         <div class="form-group" data-ng-class="{'has-error':form.lname.$error.required && (form.lname.$touched || submit)}">
-            <label>Last Name: *</label>
-            <input type="text" required class="form-control" id="lname" data-ng-model="cedit.contactInfo.last_name" name="lname">
+            <label>Last Name <span class="mandatory">*</span></label>
+            <input type="text" required class="form-control" id="lname" data-ng-model="cedit.contactInfo.last_name" name="lname" placeholder="Last Name">
         </div>
         <div class="form-group" data-ng-class="{'has-error':(form.email.$error.required || form.email.$invalid) && (form.email.$touched || submit)}">
-            <label>Email address: *</label>
-            <input type="email" required class="form-control" id="email" data-ng-model="cedit.contactInfo.title" name="email">
+            <label>Email address <span class="mandatory">*</span></label>
+            <input type="email" required class="form-control" id="email" data-ng-model="cedit.contactInfo.title" name="email" placeholder="Email">
         </div>
         <div class="form-group" data-ng-class="{'has-error':(form.phone.$error.required || form.phone.$invalid) && (form.phone.$touched || submit)}">
-            <label>Phone Number: *</label>
-            <input type="number" required class="form-control" id="email" data-ng-model="cedit.contactInfo.number" name="phone" minlength="10">
+            <label>Phone Number <span class="mandatory">*</span></label>
+            <input type="number" required class="form-control" id="email" data-ng-model="cedit.contactInfo.number" name="phone" minlength="7" maxlength="10" placeholder="10 digit Number">
         </div>
         <div class="form-group">
             <label>Status:</label>
             <div class="radio">
                 <label>
-                    <input type="radio" name="optradio" data-ng-click="cedit.contactInfo.status = true" data-ng-checked="cedit.contactInfo.status == true">Active</label>
+                    <input type="radio" name="optradio" data-ng-click="cedit.contactInfo.status = true" data-ng-checked="cedit.contactInfo.status == true" >Active</label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="optradio" data-ng-click="cedit.contactInfo.status = false" data-ng-checked="cedit.contactInfo.status == false">Inactive</label>
+                    <input type="radio" name="optradio" data-ng-click="cedit.contactInfo.status = false" data-ng-checked="cedit.contactInfo.status == false" checked="checked">Inactive</label>
             </div>
         </div>
         <div class="button-group">

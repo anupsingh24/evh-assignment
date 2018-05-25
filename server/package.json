@@ -10,9 +10,7 @@
   "license": "ISC",
   "devDependencies": {
     "express": "*",
-    "request": "*",
-    "path": "*",
-    "connect-multiparty": "*"
+    "request": "*"
   },
   "dependencies": {
     "express-http-proxy": "^1.0.7"

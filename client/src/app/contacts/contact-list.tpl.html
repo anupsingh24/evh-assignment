@@ -1,5 +1,5 @@
 <div class="pull-right">
-    <button data-ng-click="clist.createContact()" class="btn btn-success">Create Contact</button>
+    <button data-ng-click="clist.createContact()" class="btn btn-success">Create New Contact</button>
 </div>
 <div class="table">
     <ul class="table-head">
@@ -31,8 +31,8 @@
         <div data-ng-if="clist.loader">
             <img src="cdn/images/loader.gif" width="50px" class="loader">
         </div>
-        <div class="no-match-found" data-ng-if="!clist.contactList.length">
-            <p>No contact available</p>
+        <div class="no-match-found" data-ng-if="!clist.contactList.length && !clist.loader">
+            <p>No contacts available</p>
         </div>
     </ul>
 </div>

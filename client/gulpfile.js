@@ -13,9 +13,7 @@ const gulp = require('gulp'),
     path = require('path'),
     templateCache = require('gulp-angular-templatecache'),
     es = require('event-stream'),
-    pkg = require('./package.json'),
-    flatten = require('gulp-flatten'),
-    stripDebug = require('gulp-strip-debug');
+    pkg = require('./package.json');
 
 (function() {
 
@@ -25,7 +23,7 @@ const gulp = require('gulp'),
         // Release - path to release folder
         distdir : 'release',
         // Vendors
-        vendorsPath : ['src/vendor/js/jquery/jquery.min.js','src/vendor/js/angular/angular.min.js', 'src/vendor/js/angular/angular-ui-router.min.js', 'src/vendor/js/angular/angular-sanitize.min.js','src/vendor/js/underscore/*.js'],
+        vendorsPath : ['src/vendor/js/jquery/jquery.min.js','src/vendor/js/angular/angular.min.js', 'src/vendor/js/angular/angular-ui-router.min.js', 'src/vendor/js/angular/angular-sanitize.min.js','src/vendor/js/underscore/*.js','src/vendor/js/angular/ui-notification.js'],
         // HTML templates
         templatesPath : ['src/app/**/*.tpl.html'],
         // Images
