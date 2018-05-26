@@ -5,7 +5,7 @@
         .module('routes.contacts', [
             'ui.router'
         ])
-        .config(['$stateProvider', function ($stateProvider) {
+        .config(['$stateProvider', function($stateProvider) {
             $stateProvider
                 .state('contacts', {
                     url: '/contacts',
@@ -42,10 +42,9 @@
                         'contact-container': {
                             templateUrl: 'contacts/contact-edit.tpl.html',
                             controller: 'ContactEditCtrl',
-                            controllerAs: 'cedit'                        
+                            controllerAs: 'cedit'
                         }
                     }
                 });
-                
         }]);
 })();

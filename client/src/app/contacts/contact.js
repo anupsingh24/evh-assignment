@@ -26,13 +26,14 @@
             console.log("entry error", error);
         });
 
-        self.deleteContact = function(uid, index) {
+        self.deleteContact = function(uid) {
             self.loader = true;
             params.entry_uid = uid;
             api.contacts.delete(params, headers)
                 .then(function(data) {
-                    self.contactList.splice(index, 1);
-                    console.log(self.contactList, index);
+                    self.contactList = _.without(self.contactList, _.findWhere(self.contactList, {
+                      uid: uid
+                    }));
                     Notification.success("Contact deleted successfully");
                     self.loader = false;
                 })

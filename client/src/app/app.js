@@ -13,37 +13,31 @@
     app.controller('AppCtrl', AppController);
     app.controller('NotFoundController', NotFoundController);
 
-    runBlock.$inject = ['$rootScope', '$state', '$stateParams', '$location'];
+    runBlock.$inject = ['$location'];
     config.$inject = ['NotificationProvider'];
 
-    function runBlock($rootScope, $state, $stateParams, $location) {
+    function runBlock($location) {
         if (!$location.path() || $location.path() === "/") {
             $location.path("/contacts/list");
         }
-
-        $rootScope.$on('$stateChangeError', function(event) {
-            console.log("$stateChangeError");
-            $state.go('404');
-        });
     }
 
-    AppController.$inject = ['$stateParams'];
+    AppController.$inject = [];
 
-    function AppController($stateParams) {
-        console.log('$stateParams', $stateParams);
-
+    function AppController() {
+        console.log('Entry Point of app');
     }
 
-    NotFoundController.$inject = ['$stateParams'];
+    NotFoundController.$inject = [];
 
-    function NotFoundController($stateParams) {
-        console.log("not found controller");
+    function NotFoundController() {
+        console.log("Page not found controller");
     }
 
-    function config(NotificationProvider){
+    function config(NotificationProvider) {
 
         NotificationProvider.setOptions({
-            delay: 3000,
+            delay: 2000,
             startTop: 100,
             startRight: 10,
             verticalSpacing: 20,

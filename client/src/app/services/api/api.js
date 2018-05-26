@@ -1,4 +1,4 @@
-(function(){
+(function() {
     'use strict';
 
     angular
@@ -6,13 +6,12 @@
             'services.api.contacts',
         ])
         .factory('api', api);
-        
-        api.$inject = ['api.contacts'];
 
-        function api(contacts){
-           return {
-                contacts : contacts,
-            };
+    api.$inject = ['api.contacts'];
 
-        }
+    function api(contacts) {
+        return {
+            contacts: contacts,
+        };
+    }
 })();
